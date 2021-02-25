@@ -7,6 +7,7 @@ from web3 import Web3
 import BackGround
 
 class BCgui():
+
     def openAddlicense(self):
         self.window=QtWidgets.QMainWindow()
         self.uiNew=Addlicense()
@@ -31,23 +32,28 @@ class BCgui():
         self.uiNew.setupUiAll(self.window)
         self.window.show()
 
-
     def setupUi(self, DriverLicense):
         DriverLicense.setObjectName("DriverLicense")
         DriverLicense.resize(785, 495)
+
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(14)
         font.setUnderline(True)
+
         DriverLicense.setFont(font)
         DriverLicense.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         DriverLicense.setMouseTracking(False)
+
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Police.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
         DriverLicense.setWindowIcon(icon)
         DriverLicense.setIconSize(QtCore.QSize(10, 24))
+
         self.widget = QtWidgets.QWidget(DriverLicense)
         self.widget.setObjectName("widget")
+
         # -----ADD LICENSE BUTTON-----------------------------
         self.AddLicense = QtWidgets.QPushButton(self.widget)
         self.AddLicense.setGeometry(QtCore.QRect(0, 400, 181, 61))
@@ -63,7 +69,8 @@ class BCgui():
         self.AddLicense.setChecked(False)
         self.AddLicense.setObjectName("AddLicense")
         self.AddLicense.clicked.connect(self.openAddlicense)
-        #------------GET LICENSE BUTTON-----------------------
+
+        # -----------GET LICENSE BUTTON-----------------------
         self.GetLicenseStatus = QtWidgets.QPushButton(self.widget)
         self.GetLicenseStatus.setGeometry(QtCore.QRect(190, 400, 181, 61))
         font = QtGui.QFont()
@@ -78,7 +85,8 @@ class BCgui():
         self.GetLicenseStatus.setChecked(False)
         self.GetLicenseStatus.setObjectName("GetLicenseStatus")
         self.GetLicenseStatus.clicked.connect(self.openGetLicense)
-        #---------------RENEW LICENSE BUTTON----------------------
+
+        # --------------RENEW LICENSE BUTTON----------------------
         self.RenewLicense = QtWidgets.QPushButton(self.widget)
         self.RenewLicense.setGeometry(QtCore.QRect(380, 400, 201, 61))
         font = QtGui.QFont()
@@ -93,7 +101,8 @@ class BCgui():
         self.RenewLicense.setChecked(False)
         self.RenewLicense.setObjectName("RenewLicense")
         self.RenewLicense.clicked.connect(self.openRenewLicense)
-        #-----------Show All Licenses Butten-------------------
+
+        # ----------Show All Licenses Butten-------------------
         self.ShowAllLicenses = QtWidgets.QPushButton(self.widget)
         self.ShowAllLicenses.setGeometry(QtCore.QRect(590, 400, 181, 61))
         font = QtGui.QFont()
