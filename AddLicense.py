@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from ErrorMessage import Ui_Error
 from web3 import Web3
 import json
 import LicenseBF
@@ -78,20 +79,18 @@ class Addlicense():
         self.ExprDate.setText(_translate("AddDriverLicense", "Expiration Date:"))
         self.DeployBttn.setText(_translate("AddDriverLicense", "Deploy"))
 
+    def ErrorMsg(self):
+        self.window = QtWidgets.QMainWindow()
+        self.uiNew = Ui_Error()
+        self.uiNew.setupUi(self.window)
+        self.window.show()
 
     def addLicense(self):
         fname = self.fNameInput.text()
-        lname= self.LNameInput.text()
-        Id= self.IdInput.text()
+        lname = self.LNameInput.text()
+        Id = self.IdInput.text()
         exprDate = self.exprInput.text()
-        print("First Name:\t"+fname+"\n" + "Last Name:\t"+lname+"\n"+"ID:\t"+Id+"EXPR:\t"+exprDate)
-        web3_interface.add_licence(fname, lname, Id, exprDate)
-
-    # def deploy(self):
-    #     import sys
-    #     app1 = QtWidgets.QApplication(sys.argv)
-    #     AddDriverLicense = QtWidgets.QWidget()
-    #     ui1 = Addlicense()
-    #     ui1.setupUiAL(AddDriverLicense)
-    #     AddDriverLicense.show()
-    #     sys.exit(app1.exit)
+        try:
+            web3_interface.add_licence(fname, lname, Id, exprDate)
+        except:
+            self.ErrorMsg()
