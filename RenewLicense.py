@@ -1,5 +1,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from web3 import Web3
+import json
 import RenewL
+import web3_interface
+from AddLicense import Addlicense
+from ErrorMessage import Ui_Error
 
 class Ui_RenewLicense(object):
     def setupUiRL(self, Form):
@@ -16,6 +21,8 @@ class Ui_RenewLicense(object):
         self.pushButton.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
 "text-decoration: underline;")
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.ErrorMsg)
+        self.pushButton.clicked.connect(Form.close)
         self.picture = QtWidgets.QLabel(Form)
         self.picture.setGeometry(QtCore.QRect(260, 20, 291, 161))
         self.picture.setStyleSheet("image: url(:/RenewL/Renew.png);")
@@ -38,13 +45,8 @@ class Ui_RenewLicense(object):
         self.lname.setText(_translate("Form", "Enter Last Name:"))
         self.pushButton.setText(_translate("Form", "Deploy"))
 
-
-
-# if __name__ == "__main__":
-#     import sys
-#     app3 = QtWidgets.QApplication(sys.argv)
-#     Form = QtWidgets.QWidget()
-#     ui3 = Ui_RenewLicense()
-#     ui3.setupUiRL(Form)
-#     Form.show()
-#     sys.exit(app3.exec_())
+    def ErrorMsg(self):
+        self.window = QtWidgets.QMainWindow()
+        self.uiNew = Ui_Error()
+        self.uiNew.setupUi(self.window)
+        self.window.show()
