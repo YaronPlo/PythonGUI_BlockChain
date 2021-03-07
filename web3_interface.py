@@ -34,6 +34,8 @@ count = contract.functions.count().call()
 
 
 def get_all_licences():
+    global count
+    count = contract.functions.count().call()
     result = []  # '#\tName\t\t\t\tID\t\t\t\tExpiration Date\n'
     for i in range(count):
         index = contract.functions.indexes(i+1).call()
